@@ -1,13 +1,13 @@
 import React from 'react';
 import MapChart from '../components/MapChart';
-import ReactTooltip from "react-tooltip";
+import ReactTooltip from 'react-tooltip';
 import Header from '../components/Header';
 
-// import { getContent } from '../selectors/contentSelector';
-// import * as spiData from '../assets/2011-2020-Social-Progress-Index.csv'
-// import { spi2020, makeYearsArray } from '../services/SocialProgress';
-
-import { useHandleYearChange, useYears, useContent, useDataByYear } from '../hooks/hooks';
+import { 
+  useHandleYearChange, 
+  useYears, useContent, 
+  useDataByYear
+} from '../hooks/hooks';
 
 function MapContainer() {
 
@@ -18,8 +18,6 @@ function MapContainer() {
 
   let handleSubmit = (e) => {
     e.preventDefault();
-    console.log(spiByYear);
-    console.log((yearValue));
   };
 
   let selectYears = (
@@ -41,16 +39,17 @@ function MapContainer() {
       <Header 
         selectYears={selectYears} 
         yearValue={yearValue} 
-        onSubmit={handleSubmit}/>
+        onSubmit={handleSubmit} 
+      />
       <MapChart 
         setTooltipContent={setContent} 
         data={spiByYear} 
         year={yearValue}
         id="MapChart" />
-      <ReactTooltip>{content}</ReactTooltip>
+      <ReactTooltip html={true}>{content}</ReactTooltip>
     </div>
 
-  )
-};
+  );
+}
 
 export default MapContainer;
